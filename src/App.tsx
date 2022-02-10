@@ -8,7 +8,7 @@ import { persistor, store } from './shared/redux/store';
 import Auth from './features/auth/Auth';
 import UserMiddleware from './features/auth/components/UserMiddleware';
 import './index.css';
-import React from 'react';
+import RouteAdapter from './shared/RouteAdapter';
 
 const App = () => {
   return (
@@ -28,27 +28,3 @@ const App = () => {
 };
 
 export default App;
-
-/**
- * This is the main thing you need to use to adapt the react-router v6
- * API to what use-query-params expects.
- *
- * Pass this as the `ReactRouterRoute` prop to QueryParamProvider.
- */
-const RouteAdapter = ({ children }: any) => {
-  const navigate: any = useNavigate();
-  const location: any = useLocation();
-
-  const adaptedHistory = React.useMemo(
-    () => ({
-      replace(location: { state: any }) {
-        navigate(location, { replace: true, state: location.state });
-      },
-      push(location: { state: any }) {
-        navigate(location, { replace: false, state: location.state });
-      }
-    }),
-    [navigate]
-  );
-  return children({ history: adaptedHistory, location });
-};

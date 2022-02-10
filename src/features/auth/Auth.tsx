@@ -11,6 +11,7 @@ export default function Auth() {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/oauth" element={<OAuth />} />
+      <Route path="/" element={<></>} />
     </Routes>
   );
 }

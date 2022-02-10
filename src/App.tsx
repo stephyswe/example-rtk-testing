@@ -6,6 +6,7 @@ import { QueryParamProvider } from 'use-query-params';
 import FullscreenProgress from './shared/components/FullscreenProgress/FullscreenProgress';
 import { persistor, store } from './shared/redux/store';
 import Auth from './features/auth/Auth';
+import UserMiddleware from './features/auth/components/UserMiddleware';
 import './index.css';
 import React from 'react';
 
@@ -16,7 +17,9 @@ const App = () => {
         <Router>
           <QueryParamProvider ReactRouterRoute={RouteAdapter}>
             <CssBaseline />
-            <Auth />
+            <UserMiddleware>
+              <Auth />
+            </UserMiddleware>
           </QueryParamProvider>
         </Router>
       </PersistGate>

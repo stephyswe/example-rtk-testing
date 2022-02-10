@@ -1,6 +1,6 @@
 import { CssBaseline } from '@material-ui/core';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { QueryParamProvider } from 'use-query-params';
 import FullscreenProgress from './shared/components/FullscreenProgress/FullscreenProgress';

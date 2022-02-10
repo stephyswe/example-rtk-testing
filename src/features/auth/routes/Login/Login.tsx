@@ -1,6 +1,5 @@
 import { Box, Container, Grid, Link, Typography } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import React from 'react';
 
 const Login = () => {
   return (

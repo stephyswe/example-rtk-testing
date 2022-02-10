@@ -1,5 +1,5 @@
-import { isRejectedWithValue, Middleware } from "@reduxjs/toolkit";
-import { resetStateAction } from "../actions/resetState";
+import { isRejectedWithValue, Middleware } from '@reduxjs/toolkit';
+import { resetStateAction } from '../actions/resetState';
 
 export const unauthenticatedMiddleware: Middleware =
   ({ dispatch }) =>

@@ -40,9 +40,11 @@
     "coverage": "yarn test --coverage",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "husky": "husky install",
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "prettier": "prettier --write \"./**/*.{ts,tsx}\"",
-    "validate": "bash ./validate.sh"
+    "validate": "bash ./validate.sh",
+    "typecheck": "tsc -b"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -85,6 +87,7 @@
     "build",
     "public/build",
     "*.ignored/",
-    "*.ignored.*"
+    "*.ignored.*",
+    "config-overrides.js"
   ]
 }

@@ -1,4 +1,4 @@
-import { CircularProgress, Box } from "@material-ui/core";
+import { CircularProgress, Box } from '@material-ui/core';
 
 const FullscreenProgress = () => {
   return (

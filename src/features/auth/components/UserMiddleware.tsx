@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { userApi } from '../../../api/github/user/api';
-import FullscreenProgress from '../../../shared/components/FullscreenProgress/FullscreenProgress';
+import FullscreenProgress from '../../../shared/components/FullscreenProgress';
 import { RootState, useTypedSelector } from '../../../shared/redux/store';
 import { useAuthUser } from '../hooks/useAuthUser';
 

@@ -12,7 +12,7 @@ import { isDebugEnv } from '../test/utils/env';
 
 configure({
   asyncUtilTimeout: isDebugEnv() ? 60000 : 1000
-});
+})
 
 beforeAll(async () => {
   mockServer.listen({ onUnhandledRequest: 'warn' });
@@ -24,7 +24,7 @@ afterEach(() => {
 
   act(() => {
     store.dispatch(resetStateAction());
-  });
+  })
 });
 
 afterAll(async () => {

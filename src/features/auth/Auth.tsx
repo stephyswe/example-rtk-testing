@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Login from './routes/Login/Login';
-import OAuth from './routes/OAuth/OAuth';
+import Login from './routes/Login';
+import OAuth from './routes/OAuth';
 import RequireAuth from './components/RequireAuth';
 
 export default function Auth() {
@@ -8,10 +8,10 @@ export default function Auth() {
     <Routes>
       <Route element={<RequireAuth />}>
         <Route path="/private" element={<div>private</div>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/oauth" element={<OAuth />} />
+        <Route path="/" element={<></>} />
       </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/oauth" element={<OAuth />} />
-      <Route path="/" element={<></>} />
     </Routes>
   );
 }

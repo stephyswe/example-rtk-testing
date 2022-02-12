@@ -1,20 +1,19 @@
 import { useEffect } from 'react';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import AuthenticatedRoute from '../auth/components/AuthenticatedRoute';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthUser } from '../auth/hooks/useAuthUser';
-import Repositories from './routes/Repositories/Repositories';
+import RepoRoute from './routes/Repositories/RepoRoute';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   let user = useAuthUser();
   let location = useLocation();
   useEffect(() => {
-    if (user) navigate('/repositories/', { replace: true, state: location.state });
-  });
+    if (user) navigate('/repositories', { replace: true, state: location.state });
+  }, []);
 
   return (
     <Routes>
-      <Route path="/repositories" element={<Repositories />} />
+      <Route path="/repositories/*" element={<RepoRoute />} />
     </Routes>
   );
 };

@@ -1,6 +1,5 @@
 import { act, render, waitFor } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { store } from '../../shared/redux/store';
@@ -28,7 +27,7 @@ describe('Feature/Dashboard', () => {
     });
 
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/repositories/');
+      expect(history.location.pathname).toBe('/repositories');
     });
   });
 });

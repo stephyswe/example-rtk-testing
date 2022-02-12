@@ -2,6 +2,7 @@ import { Badge, Box, Chip, Divider, Grid, Typography } from '@material-ui/core';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import formatDistance from 'date-fns/formatDistance';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Repository } from '../../../../../api/github/repository/types';
 
 const RepositoryGridItem: FC<{ repo: Repository }> = ({ repo }) => {
@@ -9,7 +10,7 @@ const RepositoryGridItem: FC<{ repo: Repository }> = ({ repo }) => {
     <Grid container spacing={1}>
       <Grid item xs={12}>
         <Typography variant="subtitle1" gutterBottom aria-label="repository-name">
-          {repo.name}
+          <Link to={`/repositories/${repo.name}`}>{repo.name}</Link>
           <Box marginLeft={1} clone>
             <Chip label={repo.private ? 'Private' : 'Public'} size="small" />
           </Box>

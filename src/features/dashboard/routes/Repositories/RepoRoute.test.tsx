@@ -32,7 +32,7 @@ const arrange = (path: string) => {
 describe('Feature/Repositories', () => {
   it('should render repositories route', async () => {
     act(() => {
-      arrange('/repositories');
+      arrange('/');
     });
 
     expect(await screen.findByText(/repositories/i)).toBeDefined();

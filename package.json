@@ -63,7 +63,7 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@faker-js/faker": "6.0.0-alpha.6",
     "@octokit/fixtures": "21.4.0",
     "@octokit/types": "^6.34.0",
     "@types/bonjour": "^3.5.10",

@@ -29,10 +29,12 @@ const CommitsGrid = () => {
                   <Grid container>
                     {aggregatedCommit.commits.map((commit, commitIndex) => (
                       <Grid item sm={12} key={commit.node_id}>
+                        Something under
                         <CommitGridItem
                           hasBorderTop={commitIndex !== 0}
                           commit={commit}
                         />
+                        Something above
                       </Grid>
                     ))}
                   </Grid>

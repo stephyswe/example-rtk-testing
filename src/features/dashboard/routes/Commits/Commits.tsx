@@ -16,7 +16,9 @@ const Commits = () => {
             <CommitsSearch />
           </Grid>
           <Grid item xs={12}>
+            something under grid
             <CommitsGrid />
+            something above grid
           </Grid>
           <Grid item xs={12}>
             <CommitsPagination />

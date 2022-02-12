@@ -42,7 +42,9 @@ export const useGetRepositoryCommits = () => {
 };
 
 export const useAggregatedRepositoryCommitsData = (): AggregatedCommitsData => {
-  const { data: repositoryCommits } = useGetRepositoryCommitsState();
+  const all = useGetRepositoryCommitsState();
+  const repositoryCommits = all.data;
+
   return useMemo(() => {
     if (!repositoryCommits) return [];
 

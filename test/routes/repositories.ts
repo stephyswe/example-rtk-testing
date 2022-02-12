@@ -7,8 +7,12 @@ import { Repository } from '../../src/api/github/repository/types';
 import { repositoryMockApiData } from '../../src/mocks/github/repository/data';
 import { repositoryMockApiHandlerDefaults } from '../../src/mocks/github/repository/handlers';
 
-export const findAllDataRows = async () => {
+/* export const findAllDataRows = async () => {
   return await screen.findAllByRole('heading', { name: /repository-name/i });
+}; */
+
+export const findAllDataRows = async () => {
+  return await screen.findAllByRole('link', { name: /commit-link/i });
 };
 
 export const awaitDataRender = async (data: Repository[]) => {

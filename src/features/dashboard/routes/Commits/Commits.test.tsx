@@ -2,26 +2,28 @@ import { act, render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
-import { store } from '../../../../shared/redux/store';
 import { setAuthToken } from '../../../../../test/store/setAuthToken';
-import RepoRoute from './RepoRoute';
-import UserMiddleware from '../../../auth/components/UserMiddleware';
+import { store } from '../../../../shared/redux/store';
 import RouteAdapter from '../../../../shared/RouteAdapter';
+import UserMiddleware from '../../../auth/components/UserMiddleware';
+import Commits from './Commits';
 
-const arrange = (path: string) => {
-  setAuthToken();
-
+export const arrangeCommitsRoute = () => {
   const history = createMemoryHistory({
-    initialEntries: [path]
+    initialEntries: ['/repositories/repositoryName']
   });
+  setAuthToken();
 
   render(
     <Provider store={store}>
       <Router location={history.location} navigator={history}>
         <QueryParamProvider ReactRouterRoute={RouteAdapter}>
           <UserMiddleware>
-            <RepoRoute />
+            <Routes>
+              <Route path="/repositories/:repositoryName" element={<Commits />} />
+            </Routes>
           </UserMiddleware>
         </QueryParamProvider>
       </Router>
@@ -29,20 +31,11 @@ const arrange = (path: string) => {
   );
 };
 
-describe('Feature/Repositories', () => {
-  it('should render repositories route', async () => {
+describe('Route/Commits', () => {
+  it('should render page title', async () => {
     act(() => {
-      arrange('/');
+      arrangeCommitsRoute();
     });
-
-    expect(await screen.findByText(/repositories/i)).toBeDefined();
-  });
-
-  it('should render commits route', async () => {
-    act(() => {
-      arrange('/:repositoryName');
-    });
-
     expect(await screen.findByText(/commits/i)).toBeDefined();
   });
 });

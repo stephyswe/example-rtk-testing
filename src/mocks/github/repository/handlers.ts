@@ -1,12 +1,19 @@
+import formatLinkHeader from 'format-link-header';
 import { chunk } from 'lodash';
+import { createHeaderLink } from '../../../../test/utils/createHeaderLink';
+import { commitsSearchFormDefaultValues } from '../../../features/dashboard/routes/Commits/components/CommitSearch/CommitSearchFormContext';
 import { repositorySearchFormDefaultValues } from '../../../features/dashboard/routes/Repositories/components/RepositorySearch/RepositorySearchFormContext';
-
 import { MockAPIHandler } from '../../types';
 import { repositoryMockApiData } from './data';
 
 export const repositoryMockApiHandlerDefaults = {
   searchRepositories: {
     ...repositorySearchFormDefaultValues
+  },
+  getRepositoryCommits: {
+    ...commitsSearchFormDefaultValues,
+    branch: repositoryMockApiData.branch.base[0].name,
+    per_page: 5
   }
 };
 
@@ -62,8 +69,37 @@ const searchRepositories: MockAPIHandler = (req, res, ctx) => {
   );
 };
 
+const getRepositoryBranches: MockAPIHandler = (req, res, ctx) => {
+  return res(ctx.json(repositoryMockApiData.branch.base));
+};
+
+const getRepositoryCommits: MockAPIHandler = (req, res, ctx) => {
+  const queryParams = req.url.searchParams;
+  const sha = queryParams.get('sha');
+  const maxPage = Math.ceil(
+    repositoryMockApiData.commit.base.length /
+      repositoryMockApiHandlerDefaults.getRepositoryCommits.per_page
+  );
+  const page =
+    Number(queryParams.get('page')) ||
+    repositoryMockApiHandlerDefaults.getRepositoryCommits.page;
+
+  if (sha && sha !== repositoryMockApiHandlerDefaults.getRepositoryCommits.branch) {
+    return res(ctx.json(repositoryMockApiData.commit.search.branch));
+  }
+
+  return res(
+    ctx.set({
+      Link: formatLinkHeader(createHeaderLink(page, maxPage))
+    }),
+    ctx.json(chunk(repositoryMockApiData.commit.base, 5)[page - 1])
+  );
+};
+
 const repositoryMockApiHandlers = {
-  searchRepositories
+  searchRepositories,
+  getRepositoryBranches,
+  getRepositoryCommits
 };
 
 export default repositoryMockApiHandlers;

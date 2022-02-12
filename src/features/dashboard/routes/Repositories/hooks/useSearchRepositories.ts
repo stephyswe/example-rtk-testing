@@ -1,13 +1,13 @@
 import { debounce } from 'lodash';
 import { useCallback, useEffect, useMemo } from 'react';
-import { parseTemplate } from 'url-template';
 import { repositoryApi } from '../../../../../api/github/repository/api';
 import { RepositorySearchArgs } from '../../../../../api/github/repository/types';
 import { useTypedDispatch } from '../../../../../shared/redux/store';
 import { useAuthUser } from '../../../../auth/hooks/useAuthUser';
 import { useRepositorySearchFormContext } from './useRepositorySearchFormContext';
+import urltemplate from 'url-template';
 
-const searchQs = parseTemplate('user:{user} {name} {visibility}');
+const searchQs = urltemplate.parse('user:{user} {name} {visibility}');
 export const useSearchRepositoriesArgs = (): RepositorySearchArgs => {
   const user = useAuthUser()!;
   const { values } = useRepositorySearchFormContext();

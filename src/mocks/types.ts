@@ -1,3 +1,4 @@
+import { PathParams } from 'msw';
 import {
   DefaultRequestBody,
   ResponseResolver
@@ -5,6 +6,6 @@ import {
 import { RestContext, RestRequest } from 'msw/lib/types/handlers/RestHandler';
 
 export type MockAPIHandler = ResponseResolver<
-  RestRequest<DefaultRequestBody>,
+  RestRequest<DefaultRequestBody, PathParams>,
   RestContext
 >;

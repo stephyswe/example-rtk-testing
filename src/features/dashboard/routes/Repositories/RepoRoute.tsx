@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import FullscreenProgress from '../../../../shared/components/FullscreenProgress';
 import { useAuthUser } from '../../../auth/hooks/useAuthUser';
 const Repositories = React.lazy(() => import('./Repositories'));
+const CommitsRoute = React.lazy(() => import('../Commits/Commits'));
 
 const RepoRoute = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const RepoRoute = () => {
     <Suspense fallback={<FullscreenProgress />}>
       <Routes>
         <Route path="/repositories" element={<Repositories />} />
+        <Route path="/repositories/:repositoryName" element={<CommitsRoute />} />
       </Routes>
     </Suspense>
   );

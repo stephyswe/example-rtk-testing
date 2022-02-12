@@ -63,7 +63,7 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@faker-js/faker": "6.0.0-alpha.6",
     "@octokit/fixtures": "21.4.0",
     "@octokit/types": "^6.34.0",
     "@types/bonjour": "^3.5.10",
@@ -74,7 +74,7 @@
     "@types/url-template": "^2.0.28",
     "babel-plugin-import": "^1.13.3",
     "customize-cra": "^1.0.0",
-    "eslint": "^8.8.0",
+    "eslint": "8.8.0",
     "eslint-config-kentcdodds": "^20.0.1",
     "faker": "^6.6.6",
     "format-link-header": "^3.1.1",

@@ -23,8 +23,7 @@ const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({
           ) : (
             <Navigate
               to={{
-                pathname: '/',
-                
+                pathname: '/'
               }}
               state={{ from: location }}
             />
@@ -36,7 +35,7 @@ const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({
         ) : (
           <Navigate
             to={{
-              pathname: '/login',
+              pathname: '/login'
             }}
             state={{ from: location }}
           />

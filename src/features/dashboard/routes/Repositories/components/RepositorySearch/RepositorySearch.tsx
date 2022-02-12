@@ -8,7 +8,10 @@ import {
 } from '@material-ui/core';
 import { useFormikContext } from 'formik';
 import React, { FC, useCallback, useMemo } from 'react';
-import { RepositoryVisibilityEnum, SearchRepositorySortEnum } from '../../../../../../api/github/repository/enums';
+import {
+  RepositoryVisibilityEnum,
+  SearchRepositorySortEnum
+} from '../../../../../../api/github/repository/enums';
 import { repositorySearchFormDefaultValues } from './RepositorySearchFormContext';
 import { RepositorySearchFormValues } from './types';
 

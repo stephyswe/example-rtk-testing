@@ -8,10 +8,10 @@ export default function Auth() {
     <Routes>
       <Route element={<RequireAuth />}>
         <Route path="/private" element={<div>private</div>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/oauth" element={<OAuth />} />
-        <Route path="/" element={<></>} />
       </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/oauth" element={<OAuth />} />
+      <Route path="/" element={<></>} />
     </Routes>
   );
 }

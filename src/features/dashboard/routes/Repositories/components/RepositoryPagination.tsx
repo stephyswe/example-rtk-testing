@@ -34,7 +34,7 @@ const RepositoryPagination: FC = () => {
         page={values.page - 1}
         onPageChange={handlePageChange}
         rowsPerPage={values.per_page}
-        onChangeRowsPerPage={handlePerPageChange}
+        onRowsPerPageChange={handlePerPageChange}
         rowsPerPageOptions={repositoriesPerPage}
       />
     ),

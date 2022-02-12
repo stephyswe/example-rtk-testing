@@ -6,7 +6,6 @@ import RepositoryPagination from './components/RepositoryPagination';
 import RepositorySearch from './components/RepositorySearch/RepositorySearch';
 import RepositorySearchFormContext from './components/RepositorySearch/RepositorySearchFormContext';
 
-
 const Repositories = () => {
   return (
     <RepositorySearchFormContext>

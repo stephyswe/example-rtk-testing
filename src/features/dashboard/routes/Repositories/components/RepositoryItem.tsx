@@ -1,15 +1,14 @@
 import { Badge, Box, Chip, Divider, Grid, Typography } from '@material-ui/core';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import formatDistance from 'date-fns/formatDistance';
-import  { FC } from 'react';
+import { FC } from 'react';
 import { Repository } from '../../../../../api/github/repository/types';
-
 
 const RepositoryGridItem: FC<{ repo: Repository }> = ({ repo }) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom aria-label="repository-name">
           {repo.name}
           <Box marginLeft={1} clone>
             <Chip label={repo.private ? 'Private' : 'Public'} size="small" />

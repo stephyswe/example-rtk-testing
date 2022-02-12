@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { useCallback, useEffect, useMemo } from 'react';
-import { repositoryApi } from '../../../../../api/github/repository/api';
-import { RepositorySearchArgs } from '../../../../../api/github/repository/types';
+import { repositoryApi } from '../../../../../api/github/api';
+import { RepositorySearchArgs } from '../../../../../api/github/types';
 import { useTypedDispatch } from '../../../../../shared/redux/store';
 import { useAuthUser } from '../../../../auth/hooks/useAuthUser';
 import { useRepositorySearchFormContext } from './useRepositorySearchFormContext';

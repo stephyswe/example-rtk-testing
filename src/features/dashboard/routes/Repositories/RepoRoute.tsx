@@ -8,7 +8,7 @@ const RepoRoute = () => (
   <Suspense fallback={<FullscreenProgress />}>
     <Routes>
       <Route path="/" element={<Repositories />} />
-      <Route path=":repositoryName" element={<CommitsRoute />} />
+      <Route path="/:repositoryName" element={<CommitsRoute />} />
     </Routes>
   </Suspense>
 );

@@ -1,7 +1,7 @@
 import { act, fireEvent, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { chunk } from 'lodash';
-import { RepositoryCommit } from '../../src/api/github/repository/types';
+import { RepositoryCommit } from '../../src/api/github/types';
 import { repositoryMockApiData } from '../../src/mocks/github/repository/data';
 import { repositoryMockApiHandlerDefaults } from '../../src/mocks/github/repository/handlers';
 
@@ -12,10 +12,9 @@ export const awaitDataRender = async (data: RepositoryCommit[]) => {
 };
 
 export const getDataByPageIndex = (page: number) => {
-  return chunk(
-    repositoryMockApiData.commit.base,
-    repositoryMockApiHandlerDefaults.getRepositoryCommits.per_page
-  )[page];
+  const { base } = repositoryMockApiData.commit;
+  const { per_page } = repositoryMockApiHandlerDefaults.getRepositoryCommits;
+  return chunk(base, per_page)[page];
 };
 
 export const findPaginationButtons = async () => {
@@ -25,12 +24,6 @@ export const findPaginationButtons = async () => {
     prevBtn,
     nextBtn
   };
-};
-
-export const changePage = async (btnEl: Element) => {
-  await act(async () => {
-    userEvent.click(btnEl);
-  });
 };
 
 export const findBranchInput = async () => {

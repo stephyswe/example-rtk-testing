@@ -1,7 +1,7 @@
 import { endpoint } from '@octokit/endpoint';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { githubBaseQuery } from '../index';
-import { ResponseWithLink } from '../types';
+import { githubBaseQuery } from '../github/index';
+import { ResponseWithLink } from '../github/types';
 import { User } from './types';
 
 export const USER_API_REDUCER_KEY = 'userApi';

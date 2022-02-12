@@ -3,8 +3,8 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import formatDistance from 'date-fns/formatDistance';
 import { FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { repositoryApi } from '../../../../../api/github/repository/api';
-import { Repository } from '../../../../../api/github/repository/types';
+import { repositoryApi } from '../../../../../api/github/api';
+import { Repository } from '../../../../../api/github/types';
 import { useGetRepositoryBranchesArgs } from '../../Commits/hooks/useGetRepositoryBranches';
 import { useGetRepositoryCommitsArgs } from '../../Commits/hooks/useGetRepositoryCommits';
 
@@ -12,9 +12,7 @@ const RepositoryGridItem: FC<{ repo: Repository }> = ({ repo }) => {
   const getRepositoryCommitsArgs = useGetRepositoryCommitsArgs();
   const prefetchGetRepositoryCommits = repositoryApi.usePrefetch('getRepositoryCommits');
   const getRepositoryBranchesArgs = useGetRepositoryBranchesArgs();
-  const prefetchGetRepositoryBranches = repositoryApi.usePrefetch(
-    'getRepositoryBranches'
-  );
+  const prefetchGetRepositoryBranches = repositoryApi.usePrefetch('getRepositoryBranches');
 
   return (
     <Grid container spacing={1}>

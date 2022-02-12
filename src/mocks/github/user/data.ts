@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { User } from '../../../api/github/user/types';
+import { User } from '../../../api/user/types';
 
 export const userMockApiData = {
   user: {

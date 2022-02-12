@@ -1,8 +1,5 @@
 import { act } from '@testing-library/react';
-import {
-  awaitDataRender,
-  getDataByPageIndex
-} from '../../../../../../test/routes/commits';
+import { awaitDataRender, getDataByPageIndex } from '../../../../../../test/routes/commits';
 import { arrangeCommitsRoute } from '../Commits.test';
 
 describe('Route/CommitsGrid', () => {

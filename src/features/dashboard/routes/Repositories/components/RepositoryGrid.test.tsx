@@ -1,12 +1,6 @@
 import { act, fireEvent, waitFor } from '@testing-library/react';
-import {
-  awaitDataRender,
-  findAllDataRows,
-  getDataByPageIndex
-} from '../../../../../../test/routes/repositories';
-import repositoryMockApiHandlers, {
-  repositoryMockApiHandlerDefaults
-} from '../../../../../mocks/github/repository/handlers';
+import { awaitDataRender, findAllDataRows, getDataByPageIndex } from '../../../../../../test/routes/repositories';
+import repositoryMockApiHandlers, { repositoryMockApiHandlerDefaults } from '../../../../../mocks/github/repository/handlers';
 import { arrangeRepositoryRoute } from '../Repositories.test';
 
 describe('Component/RepositoryGrid', () => {

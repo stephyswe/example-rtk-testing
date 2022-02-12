@@ -2,7 +2,7 @@ import { Typography, Avatar, Box, Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import format from 'date-fns/format';
 import { FC } from 'react';
-import { RepositoryCommit } from '../../../../../api/github/repository/types';
+import { RepositoryCommit } from '../../../../../api/github/types';
 
 type CommitGridItemProps = {
   commit: RepositoryCommit;
@@ -13,12 +13,7 @@ const CommitGridItem: FC<CommitGridItemProps> = ({ commit, hasBorderTop }) => {
   const theme = useTheme();
 
   return (
-    <Box
-      clone
-      borderTop={hasBorderTop ? 1 : 0}
-      borderColor="rgb(177, 186, 196)"
-      padding={2}
-    >
+    <Box clone borderTop={hasBorderTop ? 1 : 0} borderColor="rgb(177, 186, 196)" padding={2}>
       <Grid item xs={12}>
         <Grid container>
           <Grid item xs={12}>
@@ -37,8 +32,7 @@ const CommitGridItem: FC<CommitGridItemProps> = ({ commit, hasBorderTop }) => {
                 </Typography>
               </Box>
               <Typography component="span" variant="body2" color="textSecondary">
-                committed on{' '}
-                {format(new Date(commit.commit.author!.date!), 'MMM dd, yyyy')}
+                committed on {format(new Date(commit.commit.author!.date!), 'MMM dd, yyyy')}
               </Typography>
             </Grid>
           </Grid>

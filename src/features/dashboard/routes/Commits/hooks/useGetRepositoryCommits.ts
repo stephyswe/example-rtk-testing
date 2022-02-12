@@ -1,8 +1,8 @@
 import isSameDay from 'date-fns/isSameDay';
 import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { repositoryApi } from '../../../../../api/github/repository/api';
-import { RepositoryCommitsArgs } from '../../../../../api/github/repository/types';
+import { repositoryApi } from '../../../../../api/github/api';
+import { RepositoryCommitsArgs } from '../../../../../api/github/types';
 import { useTypedDispatch } from '../../../../../shared/redux/store';
 import { useAuthUser } from '../../../../auth/hooks/useAuthUser';
 import { AggregatedCommitsData, CommitsRouteParams } from '../types';
@@ -48,9 +48,7 @@ export const useAggregatedRepositoryCommitsData = (): AggregatedCommitsData => {
     if (!repositoryCommits) return [];
 
     return repositoryCommits.response.reduce((aggregated, commit) => {
-      const existingCommitsGroup = aggregated.find((a) =>
-        isSameDay(new Date(a.date), new Date(commit.commit.author!.date!))
-      );
+      const existingCommitsGroup = aggregated.find((a) => isSameDay(new Date(a.date), new Date(commit.commit.author!.date!)));
       if (existingCommitsGroup) {
         existingCommitsGroup.commits.push(commit);
       } else {

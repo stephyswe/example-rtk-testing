@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { noop } from 'lodash';
 import { FC } from 'react';
-import { SearchRepositorySortEnum } from '../../../../../../api/github/repository/enums';
+import { SearchRepositorySortEnum } from '../../../../../../api/github/enums';
 
 export const repositorySearchFormDefaultValues = {
   name: '',

@@ -1,21 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { Reducer } from 'redux';
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE
-} from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { AUTH_API_REDUCER_KEY, authApi } from '../../api/auth/api';
-import { USER_API_REDUCER_KEY, userApi } from '../../api/github/user/api';
-import {
-  REPOSITORY_API_REDUCER_KEY,
-  repositoryApi
-} from '../../api/github/repository/api';
+import { USER_API_REDUCER_KEY, userApi } from '../../api/user/api';
+import { REPOSITORY_API_REDUCER_KEY, repositoryApi } from '../../api/github/api';
 import { authReducer, authSlice } from '../../features/auth/slice';
 import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 import { unauthenticatedMiddleware } from './middleware/unauthenticatedMiddleware';
@@ -44,12 +33,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    }).concat([
-      unauthenticatedMiddleware,
-      authApi.middleware,
-      userApi.middleware,
-      repositoryApi.middleware
-    ])
+    }).concat([unauthenticatedMiddleware, authApi.middleware, userApi.middleware, repositoryApi.middleware])
 });
 
 export const persistor = persistStore(store);

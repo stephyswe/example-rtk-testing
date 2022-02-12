@@ -1,10 +1,6 @@
 import { act, waitFor } from '@testing-library/react';
-import {
-  awaitDataRender,
-  changePage,
-  findPaginationButtons,
-  getDataByPageIndex
-} from '../../../../../../test/routes/commits';
+import { awaitDataRender, findPaginationButtons, getDataByPageIndex } from '../../../../../../test/routes/commits';
+import { changePage } from '../../../../../../test/routes/shared';
 import { repositoryMockApiData } from '../../../../../mocks/github/repository/data';
 import { repositoryMockApiHandlerDefaults } from '../../../../../mocks/github/repository/handlers';
 import { arrangeCommitsRoute } from '../Commits.test';

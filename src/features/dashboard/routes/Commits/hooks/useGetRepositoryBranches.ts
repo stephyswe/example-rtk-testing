@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { repositoryApi } from '../../../../../api/github/repository/api';
-import { RepositoryBranchesArgs } from '../../../../../api/github/repository/types';
+import { repositoryApi } from '../../../../../api/github/api';
+import { RepositoryBranchesArgs } from '../../../../../api/github/types';
 import { useTypedDispatch } from '../../../../../shared/redux/store';
 import { useAuthUser } from '../../../../auth/hooks/useAuthUser';
 import { CommitsRouteParams } from '../types';

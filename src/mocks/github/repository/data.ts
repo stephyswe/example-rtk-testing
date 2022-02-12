@@ -2,7 +2,7 @@ import fixtures from '@octokit/fixtures';
 import { faker } from '@faker-js/faker';
 import { uniqueString } from '../../../../test/utils/unique';
 import { repositorySearchFormDefaultValues } from '../../../features/dashboard/routes/Repositories/components/RepositorySearch/RepositorySearchFormContext';
-import { RepositoryCommit } from '../../../api/github/repository/types';
+import { RepositoryCommit } from '../../../api/github/types';
 
 const repositoryFixture = fixtures.get('api.github.com/get-repository')[0].response;
 const commitFixture = {

@@ -6,12 +6,16 @@ import RequireAuth from './components/RequireAuth';
 export default function Auth() {
   return (
     <Routes>
-      <Route element={<RequireAuth />}>
-        <Route path="/private" element={<div>private</div>} />
-      </Route>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <></>
+          </RequireAuth>
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/oauth" element={<OAuth />} />
-      <Route path="/" element={<></>} />
     </Routes>
   );
 }

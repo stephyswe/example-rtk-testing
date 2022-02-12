@@ -2,10 +2,7 @@ import { Box, Typography, Grid } from '@material-ui/core';
 import format from 'date-fns/format';
 import { useMemo } from 'react';
 import GridProgress from '../../../../../shared/components/GridProgress';
-import {
-  useGetRepositoryCommits,
-  useAggregatedRepositoryCommitsData
-} from '../hooks/useGetRepositoryCommits';
+import { useGetRepositoryCommits, useAggregatedRepositoryCommitsData } from '../hooks/useGetRepositoryCommits';
 import CommitGridItem from './CommitItem';
 
 const CommitsGrid = () => {
@@ -20,19 +17,14 @@ const CommitsGrid = () => {
           <Grid item sm={12} key={aggregatedCommit.date}>
             <Grid container spacing={2}>
               <Grid item sm={12}>
-                <Typography variant="body2">
-                  Commits on {format(new Date(aggregatedCommit.date), 'MMM dd, yyyy')}
-                </Typography>
+                <Typography variant="body2">Commits on {format(new Date(aggregatedCommit.date), 'MMM dd, yyyy')}</Typography>
               </Grid>
               <Grid item sm={12}>
                 <Box clone border={1} borderRadius={4} borderColor="rgb(177, 186, 196)">
                   <Grid container>
                     {aggregatedCommit.commits.map((commit, commitIndex) => (
                       <Grid item sm={12} key={commit.node_id}>
-                        <CommitGridItem
-                          hasBorderTop={commitIndex !== 0}
-                          commit={commit}
-                        />
+                        <CommitGridItem hasBorderTop={commitIndex !== 0} commit={commit} />
                       </Grid>
                     ))}
                   </Grid>

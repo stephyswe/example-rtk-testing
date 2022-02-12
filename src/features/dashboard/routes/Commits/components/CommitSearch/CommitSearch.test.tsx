@@ -2,11 +2,11 @@ import { act } from '@testing-library/react';
 import {
   awaitDataRender,
   changeBranch,
-  changePage,
   findBranchInput,
   findPaginationButtons,
   getDataByPageIndex
 } from '../../../../../../../test/routes/commits';
+import { changePage } from '../../../../../../../test/routes/shared';
 import { repositoryMockApiData } from '../../../../../../mocks/github/repository/data';
 import { arrangeCommitsRoute } from '../../Commits.test';
 
@@ -17,10 +17,7 @@ describe('Component/CommitsSearch', () => {
     });
 
     await awaitDataRender(getDataByPageIndex(0));
-    await changeBranch(
-      await findBranchInput(),
-      repositoryMockApiData.branch.base[1].name
-    );
+    await changeBranch(await findBranchInput(), repositoryMockApiData.branch.base[1].name);
     await awaitDataRender(repositoryMockApiData.commit.search.branch);
   });
 

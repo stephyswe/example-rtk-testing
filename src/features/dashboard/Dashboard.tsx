@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useAuthUser } from '../auth/hooks/useAuthUser';
+import { Route, Routes } from 'react-router-dom';
+import RequireAuth from '../auth/components/RequireAuth';
 import RepoRoute from './routes/Repositories/RepoRoute';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  let user = useAuthUser();
-  let location = useLocation();
-  useEffect(() => {
-    if (user) navigate('/repositories', { replace: true, state: location.state });
-  }, []);
-
   return (
     <Routes>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <></>
+          </RequireAuth>
+        }
+      />
       <Route path="/repositories/*" element={<RepoRoute />} />
     </Routes>
   );

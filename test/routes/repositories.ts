@@ -2,8 +2,8 @@ import { Matcher } from '@testing-library/dom/types/matches';
 import { act, fireEvent, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { chunk } from 'lodash';
-import { SearchRepositorySortEnum } from '../../src/api/github/repository/enums';
-import { Repository } from '../../src/api/github/repository/types';
+import { SearchRepositorySortEnum } from '../../src/api/github/enums';
+import { Repository } from '../../src/api/github/types';
 import { repositoryMockApiData } from '../../src/mocks/github/repository/data';
 import { repositoryMockApiHandlerDefaults } from '../../src/mocks/github/repository/handlers';
 
@@ -18,8 +18,9 @@ export const awaitDataRender = async (data: Repository[]) => {
 };
 
 export const getDataByPageIndex = (page: number) => {
+  const { base } = repositoryMockApiData.repository;
   const { per_page } = repositoryMockApiHandlerDefaults.searchRepositories;
-  return chunk(repositoryMockApiData.repository.base, per_page)[page];
+  return chunk(base, per_page)[page];
 };
 
 export const findPaginationButtons = async () => {
@@ -33,12 +34,6 @@ export const findPaginationButtons = async () => {
 
 export const findRowsPerPageInput = async () => {
   return await screen.findByLabelText(/rows per page/i);
-};
-
-export const changePage = async (btnEl: Element) => {
-  await act(async () => {
-    userEvent.click(btnEl);
-  });
 };
 
 export const selectPerPage = async (rowsPerPageInput: Element, perPage: number) => {
@@ -64,7 +59,7 @@ export const findSortInput = async () => {
 export const searchName = async (element: Element, text: string, opts = { delay: 0 }) => {
   await act(async () => {
     if (text.length === 0) {
-      await userEvent.clear(element);
+      userEvent.clear(element);
     } else {
       await userEvent.type(element, text, opts);
     }

@@ -20,14 +20,9 @@ export const repositoryMockApiHandlerDefaults = {
 const searchRepositories: MockAPIHandler = (req, res, ctx) => {
   const queryParams = req.url.searchParams;
   const q = queryParams.get('q') || '';
-  const perPage =
-    Number(queryParams.get('per_page')) ||
-    repositoryMockApiHandlerDefaults.searchRepositories.per_page;
-  const page =
-    Number(queryParams.get('page')) ||
-    repositoryMockApiHandlerDefaults.searchRepositories.page;
-  const sort =
-    queryParams.get('sort') || repositoryMockApiHandlerDefaults.searchRepositories.sort;
+  const perPage = Number(queryParams.get('per_page')) || repositoryMockApiHandlerDefaults.searchRepositories.per_page;
+  const page = Number(queryParams.get('page')) || repositoryMockApiHandlerDefaults.searchRepositories.page;
+  const sort = queryParams.get('sort') || repositoryMockApiHandlerDefaults.searchRepositories.sort;
   const baseResponse = {
     total_count: 1,
     incomplete_results: false
@@ -77,12 +72,9 @@ const getRepositoryCommits: MockAPIHandler = (req, res, ctx) => {
   const queryParams = req.url.searchParams;
   const sha = queryParams.get('sha');
   const maxPage = Math.ceil(
-    repositoryMockApiData.commit.base.length /
-      repositoryMockApiHandlerDefaults.getRepositoryCommits.per_page
+    repositoryMockApiData.commit.base.length / repositoryMockApiHandlerDefaults.getRepositoryCommits.per_page
   );
-  const page =
-    Number(queryParams.get('page')) ||
-    repositoryMockApiHandlerDefaults.getRepositoryCommits.page;
+  const page = Number(queryParams.get('page')) || repositoryMockApiHandlerDefaults.getRepositoryCommits.page;
 
   if (sha && sha !== repositoryMockApiHandlerDefaults.getRepositoryCommits.branch) {
     return res(ctx.json(repositoryMockApiData.commit.search.branch));

@@ -6,11 +6,7 @@ export type AuthenticatedRouteProps = {
   onlyPublic?: boolean;
 } & RouteProps;
 
-const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({
-  children,
-  onlyPublic = false,
-  ...routeProps
-}) => {
+const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({ children, onlyPublic = false, ...routeProps }) => {
   const user = useAuthUser();
 
   return (

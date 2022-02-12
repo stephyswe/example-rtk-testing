@@ -1,5 +1,5 @@
-import { RepositoryVisibilityEnum } from '../../../../../../api/github/repository/enums';
-import { RepositorySearchArgs } from '../../../../../../api/github/repository/types';
+import { RepositoryVisibilityEnum } from '../../../../../../api/github/enums';
+import { RepositorySearchArgs } from '../../../../../../api/github/types';
 
 export type RepositorySearchFormValues = {
   name: string;

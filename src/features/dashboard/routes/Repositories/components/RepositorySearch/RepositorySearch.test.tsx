@@ -1,7 +1,6 @@
 import { act } from '@testing-library/react';
 import {
   awaitDataRender,
-  changePage,
   findPaginationButtons,
   findSearchInput,
   findSortInput,
@@ -11,6 +10,7 @@ import {
   selectSort,
   selectType
 } from '../../../../../../../test/routes/repositories';
+import { changePage } from '../../../../../../../test/routes/shared';
 import { repositoryMockApiData } from '../../../../../../mocks/github/repository/data';
 import repositoryMockApiHandlers from '../../../../../../mocks/github/repository/handlers';
 import { arrangeRepositoryRoute } from '../../Repositories.test';
@@ -30,10 +30,7 @@ describe('Component/RepositorySearch', () => {
       arrangeRepositoryRoute();
     });
     const searchInput = await findSearchInput();
-    const searchRepositoriesSpy = jest.spyOn(
-      repositoryMockApiHandlers,
-      'searchRepositories'
-    );
+    const searchRepositoriesSpy = jest.spyOn(repositoryMockApiHandlers, 'searchRepositories');
 
     await searchName(searchInput, 'test', { delay: 1 });
     await awaitDataRender(repositoryMockApiData.repository.search.name);

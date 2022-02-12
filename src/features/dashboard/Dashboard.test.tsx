@@ -27,7 +27,7 @@ describe('Feature/Dashboard', () => {
     });
 
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/repositories');
+      expect(history.location.pathname).toBe('/repositories/');
     });
   });
 });

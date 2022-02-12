@@ -9,13 +9,7 @@ const GridProgress: FC<GridProgressProps> = ({ loading, children, ...gridProps }
   return (
     <Grid {...gridProps}>
       {loading ? (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height={200}
-          width="100%"
-        >
+        <Box display="flex" alignItems="center" justifyContent="center" height={200} width="100%">
           <CircularProgress />
         </Box>
       ) : (

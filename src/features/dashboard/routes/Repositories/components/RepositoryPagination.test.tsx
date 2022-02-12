@@ -1,13 +1,13 @@
 import { act } from '@testing-library/react';
 import {
   awaitDataRender,
-  changePage,
   findAllDataRows,
   findPaginationButtons,
   findRowsPerPageInput,
   getDataByPageIndex,
   selectPerPage
 } from '../../../../../../test/routes/repositories';
+import { changePage } from '../../../../../../test/routes/shared';
 import { repositoryMockApiData } from '../../../../../mocks/github/repository/data';
 import { repositoryMockApiHandlerDefaults } from '../../../../../mocks/github/repository/handlers';
 import { arrangeRepositoryRoute } from '../Repositories.test';

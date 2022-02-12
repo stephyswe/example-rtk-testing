@@ -7,9 +7,9 @@ import FullscreenProgress from './shared/components/FullscreenProgress';
 import { persistor, store } from './shared/redux/store';
 import Auth from './features/auth/Auth';
 import UserMiddleware from './features/auth/components/UserMiddleware';
-import './index.css';
 import RouteAdapter from './shared/RouteAdapter';
 import Dashboard from './features/dashboard/Dashboard';
+import './index.css';
 
 const App = () => {
   return (

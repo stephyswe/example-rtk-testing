@@ -1,6 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { QueryParamProvider } from 'use-query-params';

@@ -1,38 +1,23 @@
-import { act, render, screen } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router';
-import { QueryParamProvider } from 'use-query-params';
-import { store } from '../../../../shared/redux/store';
+import { act, screen } from '@testing-library/react';
 import { setAuthToken } from '../../../../../test/store/setAuthToken';
 import RepoRoute from './RepoRoute';
 import UserMiddleware from '../../../auth/components/UserMiddleware';
-import RouteAdapter from '../../../../shared/RouteAdapter';
+import { arrange } from '../../../../AppAuth';
 
-const arrange = (path: string) => {
-  setAuthToken();
-
-  const history = createMemoryHistory({
-    initialEntries: [path]
-  });
-
-  render(
-    <Provider store={store}>
-      <Router location={history.location} navigator={history}>
-        <QueryParamProvider ReactRouterRoute={RouteAdapter}>
-          <UserMiddleware>
-            <RepoRoute />
-          </UserMiddleware>
-        </QueryParamProvider>
-      </Router>
-    </Provider>
+const setupArrange = (route: string = '/') => {
+  arrange(
+    route,
+    <UserMiddleware>
+      <RepoRoute />
+    </UserMiddleware>
   );
 };
 
 describe('Feature/Repositories', () => {
   it('should render repositories route', async () => {
     act(() => {
-      arrange('/');
+      setAuthToken();
+      setupArrange('/');
     });
 
     expect(await screen.findByText(/repositories/i)).toBeDefined();
@@ -40,7 +25,8 @@ describe('Feature/Repositories', () => {
 
   it('should render commits route', async () => {
     act(() => {
-      arrange('/:repositoryName');
+      setAuthToken();
+      setupArrange('/:repositoryName');
     });
 
     expect(await screen.findByText(/commits/i)).toBeDefined();

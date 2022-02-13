@@ -41,7 +41,6 @@
     "coverage": "yarn test --coverage",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "husky": "husky install",
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "prettier": "prettier --write \"./**/*.{ts,tsx}\"",
     "validate": "bash ./validate.sh",
@@ -93,5 +92,14 @@
     "*.ignored.*",
     "config-overrides.js",
     "serviceWorker.ts"
-  ]
+  ],
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "serviceWorker.ts",
+      "types.ts",
+      "enums.ts",
+      "App.tsx",
+      "src/index.tsx"
+    ]
+  }
 }

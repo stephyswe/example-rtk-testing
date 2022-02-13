@@ -1,33 +1,26 @@
-import { act, render, waitFor } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router';
-import { store } from '../../shared/redux/store';
+import { act, waitFor } from '@testing-library/react';
 import UserMiddleware from '../auth/components/UserMiddleware';
 import { setAuthToken } from '../../../test/store/setAuthToken';
 import Dashboard from './Dashboard';
+import { arrange } from '../../AppAuth';
 
 describe('Feature/Dashboard', () => {
   it('should redirect to repositories', async () => {
-    const history = createMemoryHistory({
-      initialEntries: ['/']
-    });
     setAuthToken();
+    let newHistory: any;
 
     act(() => {
-      render(
-        <Provider store={store}>
-          <Router location={history.location} navigator={history}>
-            <UserMiddleware>
-              <Dashboard />
-            </UserMiddleware>
-          </Router>
-        </Provider>
+      const { history } = arrange(
+        '/',
+        <UserMiddleware>
+          <Dashboard />
+        </UserMiddleware>
       );
+      newHistory = history;
     });
 
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/repositories/');
+      expect(newHistory.location.pathname).toBe('/repositories/');
     });
   });
 });

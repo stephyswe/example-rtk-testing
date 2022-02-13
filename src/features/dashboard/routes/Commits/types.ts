@@ -1,5 +1,5 @@
 import { RepositoryCommitsData } from '../../../../api/github/types';
-import { PaginationParams } from '../../../../shared/types';
+import { PaginationParams } from '../../../../shared/types/types';
 
 export type CommitsSearchFormValues = {
   branch: string;
